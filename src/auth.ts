@@ -15,9 +15,6 @@ export const auth = betterAuth({
   }),
   advanced: {
     cookiePrefix: "thevault-app",
-    database: {
-      generateId: false,
-    },
   },
   emailAndPassword: {
     enabled: true,
