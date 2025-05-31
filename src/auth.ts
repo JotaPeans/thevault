@@ -14,7 +14,7 @@ export const auth = betterAuth({
     provider: "postgresql",
   }),
   advanced: {
-    cookiePrefix: "timo-app",
+    cookiePrefix: "thevault-app",
     database: {
       generateId: false,
     },
