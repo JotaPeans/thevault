@@ -12,7 +12,7 @@ const PrivateLayout = async ({ children }: PrivateLayoutProps) => {
     redirect("/");
   }
 
-  return <main className="flex-1 bg-sky-50">{children}</main>;
+  return <main className="flex-1 flex">{children}</main>;
 };
 
 export default PrivateLayout;
