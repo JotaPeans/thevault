@@ -72,7 +72,7 @@ const PrivateLayout = async ({ children }: PrivateLayoutProps) => {
       </Sidebar>
 
       <SidebarInset>
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 flex">{children}</main>
       </SidebarInset>
     </SidebarProvider>
   );
