@@ -55,6 +55,7 @@ model Password {
   password  String
   website   String?
   category  PasswordCategories
+  favorite  Boolean @default(false)
   strength  String
   userId    String             
   user      User               @relation(references: [id], fields: [userId])

@@ -19,6 +19,7 @@ import {
 
 import getUser from "../api/infrastructure/controllers/user/get-user";
 import { SidebarUser } from "./components/sidebarUser";
+import AppProvider from "./components/AppProvider";
 
 interface PrivateLayoutProps {
   children: ReactNode;
@@ -65,14 +66,16 @@ const PrivateLayout = async ({ children }: PrivateLayoutProps) => {
           </SidebarGroup>
         </SidebarContent>
         <SidebarFooter>
-        <SidebarMenu>
-          <SidebarUser user={user}/>
-        </SidebarMenu>
+          <SidebarMenu>
+            <SidebarUser user={user} />
+          </SidebarMenu>
         </SidebarFooter>
       </Sidebar>
 
       <SidebarInset>
-        <main className="flex-1 flex">{children}</main>
+        <AppProvider user={user}>
+          <main className="flex-1 flex">{children}</main>
+        </AppProvider>
       </SidebarInset>
     </SidebarProvider>
   );
