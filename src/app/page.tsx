@@ -1,9 +1,21 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import SignInForm from "./components/auth/sign-in-form"
-import SignUpForm from "./components/auth/sign-up-form"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import SignInForm from "./components/auth/sign-in-form";
+import SignUpForm from "./components/auth/sign-up-form";
+import getUser from "./api/infrastructure/controllers/user/get-user";
+import { redirect } from "next/navigation";
 
-const Page = () => {
+const Page = async () => {
+  const { data } = await getUser();
+
+  if (data) return redirect("/app");
+
   return (
     <main className="flex items-center justify-center flex-1">
       <Card className="w-full max-w-md">
