@@ -23,8 +23,18 @@ model User {
   updatedAt     DateTime
   sessions      Session[]
   accounts      Account[]
+  File          File?
 
   @@map("user")
+}
+
+model File {
+  id        String   @id @default(uuid())
+  key       String   @unique
+  userId    String   @unique
+  user      User     @relation(references: [id], fields: [userId])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Session {
