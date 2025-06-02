@@ -60,7 +60,7 @@ const ListPassword = () => {
         >
           <ChevronLeft />
         </Button>
-        <div className="size-10 flex items-center justify-center border border-input rounded-lg">
+        <div className="size-10 flex items-center justify-center border dark:border-input rounded-lg">
           {page}
         </div>
         <Button
