@@ -6,7 +6,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Eye, EyeOff } from "lucide-react";
 import {
   Form,
@@ -18,6 +17,7 @@ import {
 } from "@/components/ui/form";
 import { signIn } from "@/utils/better-auth/auth-client";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const signInSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address" }),
@@ -44,7 +44,7 @@ export default function SignInForm() {
 
   function onSubmit(data: SignInFormValues) {
     startLogin(async () => {
-      await signIn.email(
+      const { error } = await signIn.email(
         {
           email: data.email,
           password: data.password,
@@ -56,7 +56,10 @@ export default function SignInForm() {
         }
       );
 
-    })
+      if (error?.message) {
+        toast(error.message);
+      }
+    });
   }
 
   return (

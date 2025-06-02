@@ -53,6 +53,7 @@ model Password {
   title     String
   username  String
   password  String
+  website   String?
   category  PasswordCategories
   strength  String
   userId    String             
